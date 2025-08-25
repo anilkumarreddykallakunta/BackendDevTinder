@@ -18,7 +18,7 @@ app.post("/signup", async (req, res) => {
   await  user.save();
 res.send("sended successfully and saved ");
  } catch (error) {
-  res.send("data doesn't passed to the data base");
+  res.status(400).send("data doesn't passed to the data base");
  }
 });
 
