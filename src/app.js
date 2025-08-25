@@ -14,8 +14,12 @@ app.post("/signup", async (req, res) => {
     email: "sandeep8@gmail.com"
   });
 
- await  user.save();
-res.send("User Added successfully");
+ try {
+  await  user.save();
+res.send("sended successfully and saved ");
+ } catch (error) {
+  res.send("data doesn't passed to the data base");
+ }
 });
 
 connectDB()
