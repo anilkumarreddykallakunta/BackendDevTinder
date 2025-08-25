@@ -1,14 +1,9 @@
 //const URI = "mongodb+srv://anilkumarreddy9696:Cj8tsmKWRzET91V5@devtinder.mnumixa.mongodb.net/"
 
 const mongoose = require("mongoose");
-const mongooseDB = async () => {
+const connectDB = async () => {
   await mongoose.connect(
-    "mongodb+srv://anilkumarreddy9696:Cj8tsmKWRzET91V5@devtinder.mnumixa.mongodb.net/"
+    "mongodb+srv://anilkumarreddy9696:Cj8tsmKWRzET91V5@devtinder.mnumixa.mongodb.net/devTinder"
   );
 };
-mongooseDB().then(()=>{
-    console.log("database is connected")
-})
-.catch((err)=>{
-    console.log("database is not connected")
-})
+module.exports = connectDB;
