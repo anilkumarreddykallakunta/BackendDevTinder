@@ -6,12 +6,12 @@ const User = require('./models/user');
 app.post("/signup", async (req, res) => {
 
   const user = new User({
-    firstName: "raju",
-    lastName: "seigtuhwegiuh",
+    firstName: "anil",
+    lastName: "kumar",
     
-    password: "12345uyu7yfygfuytf6856",
-    age: 23,
-    email: "anilq3gujhq3iguhd@gmail.com"
+    password: "12345uyu7yfw34t5w34t56",
+    age: 22,
+    email: "anilreddy93458@gmail.com"
   });
 
  await  user.save();
