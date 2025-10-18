@@ -1,23 +1,22 @@
+
 const express = require("express");
 const connectDB = require("./config/database");
 const app = express();
 const User = require('./models/user');
-
-
+const { validateSignUpData } = require('./utils/validation');
+const bcrypt = require('bcrypt')
+const cookieParser = require('cookie-parser')
 app.use(express.json());
-
-
-app.post("/signup", async (req, res) => {
-
-  const user = new User(req.body);
-
- try {
-  await  user.save();
-res.send("sended successfully and saved ");
- } catch (error) {
-  res.status(400).send("data doesn't passed to the data base");
- }
-});
+app.use(cookieParser());
+const validator = require('validator');
+const jwt = require('jsonwebtoken');
+const {userAuth} = require("./middlewares/auth")
+const authRouter =  require("./routes/auth");
+const requestRouter = require("./routes/request");
+const profileRouter = require("./routes/profile");
+app.use("/",authRouter);
+app.use("/",profileRouter);
+app.use("/",requestRouter);
 
 connectDB()
   .then(() => {
@@ -29,3 +28,4 @@ connectDB()
   .catch((err) => {
     console.log("database is not connected");
   });
+
