@@ -14,15 +14,19 @@ const {userAuth} = require("./middlewares/auth")
 const authRouter =  require("./routes/auth");
 const requestRouter = require("./routes/request");
 const profileRouter = require("./routes/profile");
+const cors= require('cors');
+const userRouter = require("./routes/user");
 app.use("/",authRouter);
 app.use("/",profileRouter);
 app.use("/",requestRouter);
+app.use("/",userRouter);
+app.use(cors());
 
 connectDB()
   .then(() => {
-    console.log("database is connected");
+    console.log("database is connected established!!!!");
     app.listen(7777, () => {
-      console.log("server is started");
+      console.log("server is successfully listening on port 7777...");
     });
   })
   .catch((err) => {
