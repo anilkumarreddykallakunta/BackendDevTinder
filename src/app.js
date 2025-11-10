@@ -22,7 +22,7 @@ app.use("/",profileRouter);
 app.use("/",requestRouter);
 app.use("/",userRouter);
 app.use(cors());
-
+app.use(express.urlencoded({ extended: true }));
 connectDB()
   .then(() => {
     console.log("database is connected established!!!!");
